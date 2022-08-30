@@ -34,10 +34,12 @@ class TestSpeakingClock < Minitest::Test
 
   def test_multiples_of_five
     assert_equal 'twenty five to eight', SpeakingClock::Time.from_timestring('7:35')
-    refute_equal 'twenty to eight', SpeakingClock::Time.from_timestring('8:40')
     assert_equal 'ten to eleven', SpeakingClock::Time.from_timestring('10:50')
     assert_equal 'twenty five past six', SpeakingClock::Time.from_timestring('6:25')
     assert_equal 'twenty past five', SpeakingClock::Time.from_timestring('5:20')
+
+    # these here fail
+    assert_equal 'twenty to eight', SpeakingClock::Time.from_timestring('8:40')
     assert_equal 'five to twelve', SpeakingClock::Time.from_timestring('11:55')
   end
 end
